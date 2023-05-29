@@ -1,4 +1,4 @@
 gt:
 	git add .
-	git commit -m "clean the base files"
+	git commit -m "Add dependencies"
 	git push origin main
