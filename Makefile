@@ -1,4 +1,4 @@
 gt:
 	git add .
-	git commit -m "Add dependencies"
+	git commit -m "Set up the layout"
 	git push origin main

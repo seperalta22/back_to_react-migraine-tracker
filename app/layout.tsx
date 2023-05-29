@@ -4,6 +4,8 @@ import { useState } from 'react';
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { CssBaseline, ThemeProvider } from '@mui/material';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,8 +28,10 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<ThemeProvider theme={isDark ? 'dark' : 'light'}>
-				<CssBaseline /> // This is the MUI component that sets the theme
-				<body className={inter.className}>{children}</body>
+				<LocalizationProvider dateAdapter={AdapterDayjs}>
+					<CssBaseline /> // This is the MUI component that sets the theme
+					<body className={inter.className}>{children}</body>
+				</LocalizationProvider>
 			</ThemeProvider>
 		</html>
 	);
