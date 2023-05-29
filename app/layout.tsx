@@ -2,12 +2,11 @@
 
 import { useState } from 'react';
 import './globals.css';
-import { Inter } from 'next/font/google';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-
-const inter = Inter({ subsets: ['latin'] });
+import { Header } from '../components';
+import { darkTheme, lightTheme } from './theme/theme';
 
 export const metadata = {
 	title: 'Create Next App',
@@ -27,10 +26,13 @@ export default function RootLayout({
 
 	return (
 		<html lang='en'>
-			<ThemeProvider theme={isDark ? 'dark' : 'light'}>
+			<ThemeProvider theme={isDark ? darkTheme : lightTheme}>
 				<LocalizationProvider dateAdapter={AdapterDayjs}>
-					<CssBaseline /> // This is the MUI component that sets the theme
-					<body className={inter.className}>{children}</body>
+					<CssBaseline />
+					<body>
+						<Header toggleDark={toggleDark} />
+						<div>{children}</div>
+					</body>
 				</LocalizationProvider>
 			</ThemeProvider>
 		</html>
